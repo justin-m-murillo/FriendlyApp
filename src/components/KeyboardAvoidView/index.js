@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import styles from './styles';
 
-const KeyboardAvoidingViewTemplate = ({ children }) => {
+const KeyboardAvoidView = ({ children }) => {
   const inset = useSafeAreaInsets();
   const androidInset = 10;
   return (
@@ -15,7 +15,6 @@ const KeyboardAvoidingViewTemplate = ({ children }) => {
         { marginBottom: Device.brand === 'Apple' ? inset.bottom : androidInset, }
       ]}
       behavior={Device.brand === 'Apple' ? 'padding' : 'height'}
-      contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={100}
     >
       {children}
@@ -23,4 +22,4 @@ const KeyboardAvoidingViewTemplate = ({ children }) => {
   )
 }
 
-export default KeyboardAvoidingViewTemplate;
+export default KeyboardAvoidView;

@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
-import KeyboardAvoidingViewTemplate from '../../components/KeyboardAvoidingViewTemplate';
+import KeyboardAvoidView from '../../components/KeyboardAvoidView';
 import FormBtn from '../../components/FormBtn';
 import styles from './styles';
 
@@ -51,39 +51,39 @@ const CreatePostScreen = () => {
   };
   
   return (
-    <TouchableWithoutFeedback
-      onPress={Keyboard.dismiss}
-    >
-      <KeyboardAvoidingViewTemplate>
-        <View style={{ flex: 1 }}>
-          <View style={styles.header}>
-            <Image source={{ uri: user.image }} style={styles.profileImage} />
-            <Text style={styles.name}>{user.name}</Text>
-            <Entypo
-              onPress={pickImage}
-              name="images"
-              size={24}
-              color="limegreen"
-              style={styles.icon}
+      <KeyboardAvoidView>
+        <TouchableWithoutFeedback
+          onPress={() => Keyboard.dismiss()}
+        >
+          <View style={{ flex: 1 }}>
+            <View style={styles.header}>
+              <Image source={{ uri: user.image }} style={styles.profileImage} />
+              <Text style={styles.name}>{user.name}</Text>
+              <Entypo
+                onPress={pickImage}
+                name="images"
+                size={24}
+                color="limegreen"
+                style={styles.icon}
+              />
+            </View>
+            <TextInput
+              placeholder='What is on your mind?'
+              multiline
+              value={description}
+              onChangeText={setDescription}
+            />
+            {image && <Image source={{ uri: image['uri'] }} style={styles.image} />}
+            <FormBtn 
+              btnLabel={'POST'}
+              btnStyle={styles.btn}
+              btnTextStyle={styles.btnText}
+              disabledCondition={!description}
+              onSubmit={onSubmit}
             />
           </View>
-          <TextInput
-            placeholder='What is on your mind?'
-            multiline
-            value={description}
-            onChangeText={setDescription}
-          />
-          {image && <Image source={{ uri: image['uri'] }} style={styles.image} />}
-          <FormBtn 
-            btnLabel={'POST'}
-            btnStyle={styles.btn}
-            btnTextStyle={styles.btnText}
-            disabledCondition={!description}
-            onSubmit={onSubmit}
-          />
-        </View>
-      </KeyboardAvoidingViewTemplate>
-    </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidView>
   )
 }
 
