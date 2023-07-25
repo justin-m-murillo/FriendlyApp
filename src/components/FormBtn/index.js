@@ -1,22 +1,25 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+
+import styles from './styles'
 
 const FormBtn = ({ 
   btnLabel, 
-  btnStyle, 
-  btnTextStyle, 
-  disabledCondition,
+  btnStyle,
+  btnTextStyle,
+  disableCondition,
   onSubmit,
 }) => {
   return (
     <TouchableOpacity
-      disabled={disabledCondition} 
+      disabled={disableCondition}
       onPress={onSubmit}
-      style={[btnStyle, disabledCondition ? {opacity: 0.5} : null]} 
+      style={[styles.btnDefault, btnStyle, disableCondition ? {opacity: 0.5} : null]} 
     >
       <Text style={[
+        styles.textDefault,
         btnTextStyle, 
-        {color: disabledCondition ? 'lightgray' : 'white'}
+        {color: disableCondition ? 'lightgray' : 'white'}
       ]}>
         {btnLabel}
       </Text>

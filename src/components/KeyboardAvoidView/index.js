@@ -11,7 +11,8 @@ const KeyboardAvoidView = ({ children }) => {
   const height = useHeaderHeight();
   const marginBottom = Device.brand === 'Apple' ? inset.bottom : 10;
   const behavior = Device.brand === 'Apple' ? 'padding' : 'height';
-  
+  const verticalOffset = height + 10;
+
   return (
     <KeyboardAvoidingView
       style={[
@@ -19,7 +20,7 @@ const KeyboardAvoidView = ({ children }) => {
         { marginBottom: marginBottom, }
       ]}
       behavior={behavior}
-      keyboardVerticalOffset={height + 10}
+      keyboardVerticalOffset={verticalOffset}
     >
       {children}
     </KeyboardAvoidingView>

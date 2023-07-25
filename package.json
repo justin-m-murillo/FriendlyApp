@@ -9,9 +9,15 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-native-community/netinfo": "9.3.10",
+    "@react-native-picker/picker": "^2.4.10",
     "@react-navigation/elements": "^1.3.18",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
+    "amazon-cognito-identity-js": "^6.3.1",
+    "aws-amplify": "^5.3.5",
+    "aws-amplify-react-native": "^7.0.2",
     "expo": "^49.0.4",
     "expo-device": "~5.4.0",
     "expo-image-picker": "~14.3.2",

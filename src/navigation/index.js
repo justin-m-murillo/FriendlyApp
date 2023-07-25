@@ -14,7 +14,7 @@ const Navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Create Post'
+        initialRouteName='Feed'
       >
         <Stack.Screen 
           name='Feed'

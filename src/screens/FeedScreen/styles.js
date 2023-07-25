@@ -2,23 +2,24 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
   header: {
-    padding: 10,
+    paddingHorizontal: 10,
     paddingVertical: 15,
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
     backgroundColor: "white",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: 'lightgray'
   },
-  profileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 25,
-    marginRight: 10,
+  addPost: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  name: {
+  addPostLabel: {
+    marginLeft: 5,
     color: "gray",
   },
-  icon: {
+  visitProfileIcon: {
     marginLeft: "auto",
   },
 });

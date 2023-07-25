@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FeedPost from '../../components/FeedPost';
-import { Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import posts from '../../../assets/data/posts.json';
 
@@ -15,6 +15,10 @@ const img = "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.pn
 
 const FeedScreen = () => {
   const navigation = useNavigation();
+
+  const visitUserProfile = () => {
+    navigation.navigate('Profile');
+  }
 
   const createPost = () => {
     navigation.navigate('Create Post');
@@ -28,18 +32,25 @@ const FeedScreen = () => {
         renderItem={({ item }) => <FeedPost post={item} />}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={() => (
-          <TouchableOpacity
+          <View
             onPress={createPost}
+            style={styles.header}
           >
-            <Image source={{ uri: img }} style={styles.profileImage} />
-            <Text style={styles.name}>What's on your mind?</Text>
-            <Entypo 
-              name='images'
-              size={24}
-              color='limegreen'
-              style={styles.icon}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.addPost} 
+              onPress={createPost}
+            >
+              <MaterialCommunityIcons name="chat-plus-outline" size={24} color="gray" />
+              <Text style={styles.addPostLabel}>What's on your mind?</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.visitProfileIcon} 
+              onPress={visitUserProfile}
+              hitSlop={15}
+            >
+              <FontAwesome name="user-circle" size={24} color="dodgerblue" />
+            </TouchableOpacity>
+          </View>
         )}
       />
     </View>

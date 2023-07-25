@@ -3,6 +3,7 @@ import {
   Text, 
   Image, 
   TextInput,
+  TouchableOpacity,
 } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -25,6 +26,10 @@ const CreatePostScreen = () => {
 
   const navigation = useNavigation();
 
+  const visitUserProfile = () => {
+    navigation.navigate('Profile');
+  }
+
   const onSubmit = () => {
     console.warn({description});
     setDescription('');
@@ -37,9 +42,13 @@ const CreatePostScreen = () => {
       <DismissKeyboard>
         <View style={{ flex: 1 }}>
           <View style={styles.header}>
-            <Image source={{ uri: user.image }} style={styles.profileImage} />
+            <TouchableOpacity onPress={visitUserProfile}>
+              <Image source={{ uri: user.image }} style={styles.profileImage} />
+            </TouchableOpacity>
             <Text style={styles.name}>{user.name}</Text>
-            <ImagePickerBtn setImage={setImage} />
+            <View style={styles.imagePickerContainer}>
+              <ImagePickerBtn setImage={setImage} />
+            </View>
           </View>
           <TextInput
             placeholder='What is on your mind?'
@@ -47,12 +56,10 @@ const CreatePostScreen = () => {
             value={description}
             onChangeText={setDescription}
           />
-          {image && <Image source={{ uri: image['uri'] }} style={styles.image} />}
+          {image && <Image source={{ uri: image }} style={styles.image} />}
           <FormBtn 
             btnLabel={'POST'}
-            btnStyle={styles.btn}
-            btnTextStyle={styles.btnText}
-            disabledCondition={!description}
+            disableCondition={!description}
             onSubmit={onSubmit}
           />
         </View>

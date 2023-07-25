@@ -30,19 +30,8 @@ export default styles = StyleSheet.create({
   icon: {
     marginLeft: 'auto',
   },
-  btn: {
-    height: 40,
-    marginTop: 'auto',
-    backgroundColor: 'dodgerblue',
-    borderRadius: 5,
+  imagePickerContainer: {
     justifyContent: 'center',
-    alignItems: 'center'
-  },
-  btnDisabled: {
-    opacity: 0.5,
-  },
-  btnText: {
-    fontSize: 20,
-    fontWeight: '500',
+    marginLeft: 'auto'
   }
 })

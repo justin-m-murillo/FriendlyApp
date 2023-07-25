@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import styles from './styles'
 
 // setImage: provide function to receive image selected
-const ImagePickerBtn = ({ setImage }) => {
+const ImagePickerBtn = ({ setImage, btnText = null }) => {
   
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -19,19 +19,23 @@ const ImagePickerBtn = ({ setImage }) => {
     console.log(result);
   
     if (!result.canceled) {
-      console.log('res',result.assets[0]['uri'])
-      setImage(result.assets[0]);
+      console.log('res',result.assets[0]['uri']);
+      setImage(result.assets[0]['uri']);
     }
   };
 
   return (
-    <Entypo
+    <TouchableOpacity 
       onPress={pickImage}
-      name="images"
-      size={24}
-      color="limegreen"
-      style={styles.icon}
-    />
+      style={{ flexDirection: 'row', alignItems: 'center' }}
+    >
+      <Entypo
+        name="images"
+        size={24}
+        color="limegreen"
+      />
+        {btnText && <Text style={styles.btnText}>{btnText}</Text>}
+    </TouchableOpacity>
   )
 }
 

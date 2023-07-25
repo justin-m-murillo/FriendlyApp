@@ -5,6 +5,7 @@ const DismissKeyboard = ({ children }) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => Keyboard.dismiss()}
+      style={{ flex: 1 }}
     >
       { children }
     </TouchableWithoutFeedback>
