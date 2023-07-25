@@ -11,4 +11,4 @@ const DismissKeyboard = ({ children }) => {
   )
 }
 
-export default DismissKeyboard
+export default DismissKeyboard;

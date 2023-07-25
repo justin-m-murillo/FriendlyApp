@@ -6,8 +6,6 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Entypo } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
 
 import KeyboardAvoidView from '../../components/KeyboardAvoidView';
 import DismissKeyboard from '../../components/DismissKeyboard';
@@ -33,22 +31,6 @@ const CreatePostScreen = () => {
 
     navigation.goBack();
   }
-
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-  
-    console.log(result);
-  
-    if (!result.canceled) {
-      console.log('res',result.assets[0]['uri'])
-      setImage(result.assets[0]);
-    }
-  };
   
   return (
     <KeyboardAvoidView>
