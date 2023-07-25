@@ -51,31 +51,31 @@ const CreatePostScreen = () => {
   };
   
   return (
-      <KeyboardAvoidView>
-        <DismissKeyboard>
-          <View style={{ flex: 1 }}>
-            <View style={styles.header}>
-              <Image source={{ uri: user.image }} style={styles.profileImage} />
-              <Text style={styles.name}>{user.name}</Text>
-              <ImagePickerBtn setImage={setImage} />
-            </View>
-            <TextInput
-              placeholder='What is on your mind?'
-              multiline
-              value={description}
-              onChangeText={setDescription}
-            />
-            {image && <Image source={{ uri: image['uri'] }} style={styles.image} />}
-            <FormBtn 
-              btnLabel={'POST'}
-              btnStyle={styles.btn}
-              btnTextStyle={styles.btnText}
-              disabledCondition={!description}
-              onSubmit={onSubmit}
-            />
+    <KeyboardAvoidView>
+      <DismissKeyboard>
+        <View style={{ flex: 1 }}>
+          <View style={styles.header}>
+            <Image source={{ uri: user.image }} style={styles.profileImage} />
+            <Text style={styles.name}>{user.name}</Text>
+            <ImagePickerBtn setImage={setImage} />
           </View>
-        </DismissKeyboard>
-      </KeyboardAvoidView>
+          <TextInput
+            placeholder='What is on your mind?'
+            multiline
+            value={description}
+            onChangeText={setDescription}
+          />
+          {image && <Image source={{ uri: image['uri'] }} style={styles.image} />}
+          <FormBtn 
+            btnLabel={'POST'}
+            btnStyle={styles.btn}
+            btnTextStyle={styles.btnText}
+            disabledCondition={!description}
+            onSubmit={onSubmit}
+          />
+        </View>
+      </DismissKeyboard>
+    </KeyboardAvoidView>
   )
 }
 
