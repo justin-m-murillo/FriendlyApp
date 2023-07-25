@@ -3,8 +3,6 @@ import {
   Text, 
   Image, 
   TextInput,
-  TouchableWithoutFeedback,
-  Keyboard
 } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -12,6 +10,8 @@ import { Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
 import KeyboardAvoidView from '../../components/KeyboardAvoidView';
+import DismissKeyboard from '../../components/DismissKeyboard';
+import ImagePickerBtn from '../../components/ImagePickerBtn';
 import FormBtn from '../../components/FormBtn';
 import styles from './styles';
 
@@ -52,20 +52,12 @@ const CreatePostScreen = () => {
   
   return (
       <KeyboardAvoidView>
-        <TouchableWithoutFeedback
-          onPress={() => Keyboard.dismiss()}
-        >
+        <DismissKeyboard>
           <View style={{ flex: 1 }}>
             <View style={styles.header}>
               <Image source={{ uri: user.image }} style={styles.profileImage} />
               <Text style={styles.name}>{user.name}</Text>
-              <Entypo
-                onPress={pickImage}
-                name="images"
-                size={24}
-                color="limegreen"
-                style={styles.icon}
-              />
+              <ImagePickerBtn setImage={setImage} />
             </View>
             <TextInput
               placeholder='What is on your mind?'
@@ -82,7 +74,7 @@ const CreatePostScreen = () => {
               onSubmit={onSubmit}
             />
           </View>
-        </TouchableWithoutFeedback>
+        </DismissKeyboard>
       </KeyboardAvoidView>
   )
 }
