@@ -2,9 +2,9 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "friendcd45b6df",
-    "userPoolName": "FriendlyApp",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "friend711595dc",
+    "userPoolName": "friendly",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -30,10 +30,10 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "Friendcd45b6df_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "friend711595dc_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "cd45b6df",
-    "resourceName": "FriendlyApp",
+    "sharedId": "711595dc",
+    "resourceName": "friendly",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
     "usernameAttributes": [
@@ -46,6 +46,20 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": []
   }
 }

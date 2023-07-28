@@ -6,16 +6,20 @@ const IconBtn = ({
   btnColor, 
   btnText,
   btnTextStyle,
+  onPress,
 }) => {
   return (
-    <TouchableOpacity style={{
-      backgroundColor: btnColor,
-      flexDirection: 'row', 
-      alignItems: 'center',
-      borderRadius: 10,
-      paddingVertical: 8,
-      paddingHorizontal: 16 
-    }}>
+    <TouchableOpacity 
+      style={{
+        backgroundColor: btnColor,
+        flexDirection: 'row', 
+        alignItems: 'center',
+        borderRadius: 10,
+        paddingVertical: 8,
+        paddingHorizontal: 16 
+      }}
+      onPress={onPress}
+    >
       {btnIcon && 
         <View style={{ marginHorizontal: 2 }}>
           {btnIcon}

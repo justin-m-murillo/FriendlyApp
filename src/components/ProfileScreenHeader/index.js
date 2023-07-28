@@ -12,8 +12,8 @@ const ProfileScreenHeader = ({ bannerImgUri, user }) => {
       <View style={styles.profileHeaderContainer}>
         <ProfileHeader
           bannerImgUri={bannerImgUri}
-          profileImgUri={user.image}
-          userName={user.name}
+          profileImgUri={user?.image}
+          userName={user?.name}
         />
       </View>
       <View style={styles.profileBioContainer}>

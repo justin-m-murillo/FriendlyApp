@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect, useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -6,34 +6,41 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import FeedScreen from '../screens/FeedScreen';
 import CreatePostScreen from '../screens/CreatePostScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import UpdateProfileScreen from '../screens/UpdateProfileScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
+import useFetchUser from '../hooks/useFetchUser';
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
+  const { user, isLoading } = useFetchUser();
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName='Feed'
-      >
-        <Stack.Screen 
-          name='Feed'
-          component={FeedScreen}
-        />
-        <Stack.Screen
-          name='Create Post'
-          component={CreatePostScreen}
-        />
-        <Stack.Screen
-          name='Profile'
-          component={ProfileScreen}
-        />
-        <Stack.Screen
-          name='Update Profile'
-          component={UpdateProfileScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      {!isLoading &&
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName={!user ? 'Edit Profile' : 'Feed'}
+          >
+            <Stack.Screen 
+              name='Feed'
+              component={FeedScreen}
+            />
+            <Stack.Screen
+              name='Create Post'
+              component={CreatePostScreen}
+            />
+            <Stack.Screen
+              name='Profile'
+              component={ProfileScreen}
+            />
+            <Stack.Screen
+              name='Edit Profile'
+              component={EditProfileScreen}
+            />
+          </Stack.Navigator>
+      </NavigationContainer>
+      }
+    </>
   )
 }
 

@@ -19,7 +19,7 @@ const ImagePickerBtn = ({ setImage, btnText = null }) => {
     console.log(result);
   
     if (!result.canceled) {
-      console.log('res',result.assets[0]['uri']);
+      //console.log('res',result.assets[0]['uri']);
       setImage(result.assets[0]['uri']);
     }
   };

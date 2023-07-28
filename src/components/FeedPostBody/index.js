@@ -1,15 +1,17 @@
-import { Image, Text } from 'react-native'
+import { Text } from 'react-native'
 import React from 'react';
+import { S3Image } from '../../awsHelpers';
+
 import styles from './styles';
 
 const FeedPostBody = ({ description, image }) => {
   return (
     <>
       {description && 
-          <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description}>{description}</Text>
       }
       {image && 
-        <Image source={{ uri: image }} style={styles.image} />
+        <S3Image imgKey={image} style={styles.image} />
       }
     </>
   )

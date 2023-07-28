@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3friendlystorage448c31eb",
+  "bucketName": "friendly-storage-448c31eb",
+  "policyUUID": "4dbb9c16",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
