@@ -13,14 +13,11 @@ const useFetchFeed = () => {
   const [ posts, setPosts ] = useState([]);
 
   useEffect(() => {
-    const fetchFeed = async () => {
-      const posts = await DataStore.query(Post, Predicates.ALL, {
-        sort: (s) => s.createdAt(SortDirection.DESCENDING)
-      });
-      setPosts(posts);
-      setIsLoading(false);
-    }
-    fetchFeed();
+    const subscription = DataStore.observeQuery(Post, Predicates.ALL, {
+      sort: (p) => p.createdAt(SortDirection.DESCENDING),
+    }).subscribe(({ items }) => setPosts(items));
+    setIsLoading(false);
+    return () => subscription.unsubscribe();
   }, []);
 
   return { posts, isLoading };
