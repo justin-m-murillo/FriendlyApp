@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
 
 import ProfileImg from '../ProfileImg';
+import FeedPostDateTime from '../FeedPostDateTime';
 
 import styles from './styles';
 
@@ -24,7 +25,7 @@ const FeedPostHeader = ({ id, image, name, createdAt }) => {
         <TouchableOpacity onPress={visitUserProfile}>
           <Text style={styles.name}>{name}</Text>
         </TouchableOpacity>
-        <Text style={styles.subtitle}>{createdAt}</Text>
+        <FeedPostDateTime dateTime={createdAt} style={styles.subtitle} />
       </View>
       <Entypo 
         name='dots-three-horizontal' 

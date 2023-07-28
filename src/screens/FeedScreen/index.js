@@ -11,6 +11,7 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 
 import useFetchFeed from '../../hooks/useFetchFeed';
+import ProfileImg from '../../components/ProfileImg';
 
 const FeedScreen = () => {
   const [ posts, setPosts ] = useState([]);

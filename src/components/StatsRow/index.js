@@ -8,7 +8,7 @@ const StatsRow = ({ numberOfLikes, numberOfShares }) => {
     <View style={styles.statsRow}>
       <Image source={LikeImage} style={styles.likeIcon} />
       <Text style={styles.likedBy}>
-        Elon Musk and {numberOfLikes} others
+        {numberOfLikes} likes
       </Text>
       <Text style={styles.shares}>
         {numberOfShares} shares
