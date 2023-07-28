@@ -19,6 +19,7 @@ const Navigator = () => {
       {!isLoading &&
         <NavigationContainer>
           <Stack.Navigator
+            key={user}
             initialRouteName={!user ? 'Edit Profile' : 'Feed'}
           >
             <Stack.Screen 

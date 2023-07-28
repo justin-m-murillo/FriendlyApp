@@ -7,6 +7,7 @@ export default styles = StyleSheet.create({
   },
   profileImg: {
     width: '30%',
+    height: 'auto',
     aspectRatio: 1,
     borderRadius: 100,
     marginBottom: 10,
