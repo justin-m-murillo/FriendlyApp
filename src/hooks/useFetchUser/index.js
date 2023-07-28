@@ -17,18 +17,26 @@ const useFetchUser = (id = '') => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      let subscription;
       if (!id) {
         console.log('Fetching current user');
         const dbUser = await Auth.currentAuthenticatedUser();
-        const thisUser = await DataStore.query(User, (u) => u.authUserId.eq(dbUser.attributes.sub));
-        setUser(thisUser.length == 0 ? null : thisUser[0]);
+        id = dbUser.attributes.sub;
       } else {
         console.log('Fetching queried user');
-        await DataStore.query(User, id).then(setUser);
       }
+      subscription = DataStore.observeQuery(
+        User, u => u.authUserId.eq( id ))
+          .subscribe(({ items }) => items.length == 1 
+            ? setUser(items[0]) 
+            : setUser(null)
+      );
       setIsLoading(false);
+      return subscription;
     }
-    fetchUser();
+
+    const subscription = fetchUser();
+    return () => subscription.unsubscribe();
   }, [id]);
 
   return { user, isLoading }
